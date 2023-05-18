@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>    Students access</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div>
+    <button onclick="document.location='index.html'" class="homebutton">
+     Home
+     </button>
+    <button onclick="document.location='docs.html'" class="docsbutton">
+     Documents
+    </button>
+    <button onclick="document.location='books.html'" class="booksbutton">
+     Books
+     </button>
+    <button class="videosbutton">
+     Videos
+     </button>
+    </div>
+    <div>
+     <br>
+    <br>
+      <h2>Videos</h2>
+    </div>
+    <div>
+     <button class="detailsbutton">
+     <details>
+      <summary>GENERAL ANATOMY</summary>
+      <p><li class="linkbooks">Books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+     </details>
+     </button>
+    </div>
+    <div>
+     <button class="detailsbutton">
+     <details>
+      <summary>OCULAR ANATOMY</summary>
+      <p><li class="linkbooks">books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+     </details>
+     </button>
+    </div>
+    <div>
+     <button class="detailsbutton">
+     <details>
+      <summary>BASIC BIOCHEMISTRY I AND II </summary>
+      <p><li class="linkbooks">books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+     </details>
+     </button>
+    </div>
+    <div>
+     <button class="detailsbutton">
+     <details>
+      <summary>OPTICS</summary>
+      <p><li class="linkbooks">Books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+      <p><li class="linkbooks">Books</li></p>
+     </details>
+     </button>
+    </div>
+  </body>
+</html>
+<style>
+    html {
+        background-color: #161614;
+        color: white;
+        font-family: arial;
+        font-weight: lighter;
+    }
+   
+    //div {
+        display: block;
+        background-color: skyblue;
+        width: 100%;
+        height: auto;
+    }
+
+.homebutton {
+        display:block;
+        float: left;
+        text-align: center;
+        font-family:Arial, fantasy;
+        padding: auto;
+        color: white;
+        background-color: black;
+        font-size: 18px;
+        border-radius: 10px;
+        border: solid 2px;
+        border-color: white;
+        padding-right: 40px;
+        margin: 0px;
+        transition:padding 0.4s;
+
+    }
+    .homebutton:hover {
+      padding: 13px;
+      color: #161614;
+      background-color: white;
+      font-size: 18px;
+    }
+    .homebutton:active {
+      opacity: 0.6;
+      background-color: ;
+      padding: 15px;
+    }
+    .docsbutton {
+        display:block;
+        float: left;
+        text-align: center;
+        font-size: 16px;
+        font-family:Arial, fantasy;
+        font-weight: ;
+        color: white;
+        background-color: #161614;
+        border-radius: 10px;
+        border: solid 2px;
+        border-color: white;
+        padding: auto;
+        padding-right: 40px;
+        margin: 0px;
+        transition:padding 0.4s;
+
+    }
+    .docsbutton:hover {
+      padding: 10px;
+      color: #161614;
+      background-color: white;
+      font-size: 18px;
+    }
+    .docsbutton:active {
+      opacity: 0.6;
+      background-color: ;
+      padding: 15px;
+    }
+.booksbutton {
+        display:block;
+        float: left;
+        text-align: center;
+        font-size: 16px;
+        font-family:Arial, fantasy;
+        font-weight: ;
+        color: white;
+        background-color: #161614;
+        border-radius: 10px;
+        border: solid 2px;
+        border-color: white;
+        padding: auto;
+        padding-right: 40px;
+        margin: 0px;
+        transition:padding 0.4s;
+
+    }
+    .booksbutton:hover {
+      padding: 10px;
+      color: #161614;
+      background-color: white;
+      font-size: 18px;
+    }
+    .booksbutton:active {
+      opacity: 0.6;
+      background-color: ;
+      padding: 15px;
+    }
+.videosbutton {
+        display:block;
+        float: left;
+        text-align: center;
+        font-size: 16px;
+        font-family:Arial, fantasy;
+        font-weight: ;
+        color: black;
+        background-color: white;
+        border-radius: 10px;
+        border: solid 2px;
+        border-color: white;
+        padding: 13px;
+        padding-right: 40px;
+        margin: 0px;
+        transition:padding 0.4s;
+
+    }
+    .videosbutton:hover {
+      padding: 10px;
+      color: #161614;
+      background-color: white;
+      font-size: 18px;
+    }
+    .videosbutton:active {
+      opacity: 0.6;
+      background-color: ;
+      padding: 15px;
+    }
+    h2 {
+     margin-top: 65px;
+     background-color: white;
+      font-family:arial;
+      font-style: italic;
+      color: black;
+      text-align: center;
+      text-decoration-line: ;
+      border: double 4px;
+      border-radius: 3px;
+      border-color:white ;
+    }
+    summary {
+     font-size: 24px;
+     color: white;
+     border: solid 2px;
+     width: auto;
+     border-radius: 10px;
+     background-color: black;
+    }
+    .detailsbutton {
+     border: double 2px;
+     border-radius:10px;
+     margin-bottom: 10px;
+    }
+    .detailsbutton:hover {
+     border: double 2px;
+     border-radius:3px;
+     margin-bottom: 10px;
+    }
+    @keyframes details-show {
+  from {
+    opacity:0;
+    transform: var(--details-translate, translateY(-0.7em));
+  }
+}
+
+details[open] > *:not(summary) {
+  animation: details-show 0.9s ease-in-out;
+}
+details
+{
+    transition: height 0.5s ease;
+    overflow: hidden;
+}
+
+details:not([open])
+{
+    height: 2.5em;
+}
+
+details[open]
+{
+    height: 17em;
+    
+}
+.linkbooks {
+ border: solid 2px;
+ width:auto;
+ border-radius: 10px;
+ transition: padding 0.6s;
+}
+.linkbooks:hover {
+ padding: 7px;
+ color: white;
+ background-color: black;
+}
+.linkbooks:active {
+ color: white;
+ background-color: black;
+ opacity: 0.8;
+}
+</style>

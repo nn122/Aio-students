@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Students access    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+    function saveNote() {
+      var note = document.getElementById("note").value;
+      var expirationTime = new Date(document.getElementById("expirationTime").value); // Use the specified expiration time
+      var currentTime = new Date();
+
+      if (expirationTime > currentTime) {
+        var notes = localStorage.getItem("notes");
+        if (!notes) {
+          notes = [];
+        } else {
+          notes = JSON.parse(notes);
+        }
+        notes.push({ note: note, expirationTime: expirationTime });
+        localStorage.setItem("notes", JSON.stringify(notes));
+       //* alert("Note saved!");
+        document.getElementById("note").value = "";
+        document.getElementById("expirationTime").value = "";
+      } else {
+        alert("Invalid expiration time! Please enter a future time.");
+      }
+    }
+
+    function showNotes() {
+      var notes = JSON.parse(localStorage.getItem("notes"));
+
+      if (notes && notes.length > 0) {
+        var noteDisplay = document.getElementById("noteDisplay");
+        var expirationDisplay = document.getElementById("expirationDisplay");
+        noteDisplay.innerHTML = "";
+        expirationDisplay.innerHTML = "";
+
+        for (var i = 0; i < notes.length; i++) {
+          var note = notes[i].note;
+          var expirationTime = new Date(notes[i].expirationTime);
+
+          var noteDiv = document.createElement("div");
+          noteDiv.innerHTML = note;
+          noteDisplay.appendChild(noteDiv);
+
+          var expirationDiv = document.createElement("div");
+          expirationDiv.innerHTML = "Expires on: " + expirationTime.toString();
+          expirationDisplay.appendChild(expirationDiv);
+
+          if (expirationTime <= new Date()) {
+            noteDiv.style.display = "none";
+            expirationDiv.style.display = "none";
+          }
+        }
+      } else {
+        document.getElementById("noteDisplay").innerHTML = "No notes available.";
+        document.getElementById("expirationDisplay").innerHTML = "";
+      }
+    }
+    
+    function showOldNotes() {
+      var notes = JSON.parse(localStorage.getItem("notes"));
+
+      if (notes && notes.length > 0) {
+        var oldNotesDisplay = document.getElementById("oldNotesDisplay");
+        oldNotesDisplay.innerHTML = "";
+
+        for (var i = 0; i < notes.length; i++) {
+          var note = notes[i].note;
+          var expirationTime = new Date(notes[i].expirationTime);
+
+          if (expirationTime <= new Date()) {
+            var noteDiv = document.createElement("div");
+            noteDiv.innerHTML = note;
+            oldNotesDisplay.appendChild(noteDiv);
+
+            var expirationDiv = document.createElement("div");
+            expirationDiv.innerHTML = "Expired on: " + expirationTime.toString();
+            oldNotesDisplay.appendChild(expirationDiv);
+          }
+        }
+
+        if (oldNotesDisplay.innerHTML === "") {
+          oldNotesDisplay.innerHTML = "No old notes available.";
+        }
+      } else {
+        document.getElementById("oldNotesDisplay").innerHTML = "No old notes available.";
+      }
+    }
+  </script>
+  </head>
+  <body>
+    <div class="divheader">
+    <button class="homebutton">
+     Home
+     </button>
+    <button onclick="document.location='docs.html'" class="docsbutton">
+     Documents
+    </button>
+    <button onclick="document.location='view books.html'" class="booksbutton">
+     Books
+     </button>
+    <button onclick="document.location='view videos.html'" class="videosbutton">
+     Videos
+     </button>
+    </div>
+    <div>
+     <br>
+     <br>
+     <h2>All files of 2022 Batch</h2>
+      <br>
+    </div>
+    <br>
+    <div>
+     </button>
+    <p onclick="document.location='WEB_1 - docs.html'" class="buttonbody">
+     Documents
+    </p>
+    <br>
+    <p onclick="document.location='WEB_1 - books.html'" class="buttonbody">
+     Books
+     <p>
+      <br>
+    <p onclick="document.location='WEB_1 - videos.html'" class="buttonbody">
+     Videos
+     </p>
+    </div>
+    <div>
+      <h1>Today's Notes</h1>
+  <textarea id="note" rows="4" cols="45"></textarea><br>
+  Set Expiration Time: <input type="datetime-local" id="expirationTime"><br>
+  <button class="notessavebutton" onclick="saveNote()">Save Note</button>
+  <hr>
+  <h2 hidden class="notesh2">Active Note</h2>
+  <div id="noteDisplay"></div>
+  <div id="expirationDisplay"></div>
+  <p hidden >New Notes:</p>
+  <button class="notesbutton" onclick="showNotes()">Show new Notes</button>
+
+  <hr>
+  <h2 hidden class="notesh2">Old Notes</h2>
+  <div id="oldNotesDisplay"></div>
+  <button class="notesbutton" onclick="showOldNotes()">Show Old Notes.</button>
+    </div>
+  </body>
+</html>
+<style>
+html {
+        display: block;
+        width: auto;
+        background-color: #161614;
+        color: white;
+        font-family: Brandon Text ;
+        font-weight: lighter;
+    }
+.buttonbody {
+   width: auto;
+   text-align: center;
+   font-size: 38px;
+   margin: 10px;
+   border: solid 3px;
+   border-radius:10px;
+   transition:font-size 0.4s;
+   transition:padding 1s;
+}
+.buttonbody:hover {
+      font-size: 48px;
+      color: #161614;
+      padding: 25px;
+      background-color: white;
+}
+.buttonbody:active {
+ opacity: 0.6;
+      background-color: white;
+      font-size: 48px;
+      padding: 25px;
+}
+
+     .divheader {
+        display: block;
+        background-color: black;
+        width: 100%;
+        height: auto;
+    }
+    
+.homebutton {
+        display:block;
+        float: left;
+        text-align: center;
+        font-family:Arial, fantasy;
+        padding: 13px;
+        padding-top: 18px;
+        padding-bottom: 18px;
+        color: #161614;
+        background-color: white;
+        font-size: 18px;
+        border-radius: 10px;
+        border: solid 2px;
+        border-color: white;
+        padding-right: 40px;
+        margin: 5px;
+        transition:padding 0.4s;
+
+    }
+    .homebutton:hover {
+      padding: 13px;
+      padding-top: 18px;
+        padding-bottom: 18px;
+      color: #161614;
+      background-color: white;
+      font-size: 18px;
+    }
+    .homebutton:active {
+      opacity: 0.6;
+      background-color: ;
+      padding: 15px;
+      padding-top: 18px;
+        padding-bottom: 18px;
+    }
+    .docsbutton {
+        display:block;
+        float: left;
+        text-align: center;
+        font-size: 16px;
+        font-family:Arial, fantasy;
+        font-weight: ;
+        color: white;
+        background-color: #161614;
+        border-radius: 10px;
+        border: solid 2px;
+        border-color: white;
+        padding: auto;
+        padding-right: 40px;
+        margin: 5px;
+        transition:padding 0.4s;
+
+    }
+    .docsbutton:hover {
+      padding: 10px;
+      color: #161614;
+      background-color: white;
+      font-size: 18px;
+    }
+    .docsbutton:active {
+      opacity: 0.6;
+      background-color: ;
+      padding: 15px;
+    }
+.booksbutton {
+        display:block;
+        float: left;
+        text-align: center;
+        font-size: 16px;
+        font-family:Arial, fantasy;
+        font-weight: ;
+        color: white;
+        background-color: #161614;
+        border-radius: 10px;
+        border: solid 2px;
+        border-color: white;
+        padding: auto;
+        padding-right: 40px;
+        margin: 5px;
+        transition:padding 0.4s;
+
+    }
+    .booksbutton:hover {
+      padding: 10px;
+      color: #161614;
+      background-color: white;
+      font-size: 18px;
+    }
+    .booksbutton:active {
+      opacity: 0.6;
+      background-color: ;
+      padding: 15px;
+    }
+.videosbutton {
+        display:block;
+        float: left;
+        text-align: center;
+        font-size: 16px;
+        font-family:Arial, fantasy;
+        font-weight: ;
+        color: white;
+        background-color: #161614;
+        border-radius: 10px;
+        border: solid 2px;
+        border-color: white;
+        padding: auto;
+        padding-right: 40px;
+        margin: 5px;
+        transition:padding 0.4s;
+
+    }
+    .videosbutton:hover {
+      padding: 10px;
+      color: #161614;
+      background-color: white;
+      font-size: 18px;
+    }
+    .videosbutton:active {
+      opacity: 0.6;
+      background-color: ;
+      padding: 15px;
+    }
+    h2 {
+     padding: 10px;
+      margin-top:50px;
+      background-color: white;
+      font-family:arial;
+      font-style: italic;
+      color: black;
+      text-align: center;
+      text-decoration-line: ;
+      border: solid 2px;
+      border-color: white;
+      border-radius: 30px;
+      box-shadow: 0px 1px 7px #ffffff;
+    }
+    textarea,input {
+     width: auto;
+     color: black;
+     border: solid 2px;
+     border-color: blue;
+     border-radius:10px;
+    }
+    
+    .notesbutton {
+      background-color: white;
+      padding: 10px;
+     border-radius: 7px;
+     transition:padding 0.4s;
+    }
+    .notesbutton:hover {
+     border-radius: 7px;
+    padding: 15px;
+    }
+    .notesbutton:active {
+     border-radius: 7px;
+     padding: 17px;
+     opacity: 0.7;
+    }
+    .notesh2 {
+     background-color: black;
+     color: white;
+     border: solid 3px;
+     border-color: white;
+     border-radius: 10px;
+     box-shadow: none;
+    }
+    .notessavebutton {
+  background-color: white;
+  color: rgb(0 80 220);
+  border-radius: 5px;
+  padding: 8px;
+  transition:padding 0.7s;
+  transition:background-color 0.7s;
+  transition:color 0.7;
+  transition:animation 0.7s;
+}
+
+.notessavebutton:active {
+  padding: 8.5px;
+  background-color: rgb(0 80 220);
+  color: white;
+  border-radius: 5px;
+  animation: hoverAnimation 4s ease-in-out;
+}
+@keyframes hoverAnimation {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 80, 220, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(0, 80, 220, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 80, 220, 0);
+  }
+}
+
+.notessavebutton:hover {
+  padding: 11px;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  opacity: 0.8;
+  animation: savedAnimation 1.2s ease-in-out;
+}
+
+@keyframes savedAnimation {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 128, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(0, 128, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 128, 0, 0);
+  }
+}
+</style>
