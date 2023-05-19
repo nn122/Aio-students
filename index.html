@@ -87,6 +87,34 @@
         document.getElementById("oldNotesDisplay").innerHTML = "No old notes available.";
       }
     }
+      <?php
+// Establish database connection
+$host = 'your_host';
+$dbname = 'your_database';
+$username = 'your_username';
+$password = 'your_password';
+
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Retrieve note and expiration time from the POST request
+    $note = $_POST['note'];
+    $expirationTime = $_POST['expirationTime'];
+
+    // Save the note in the database
+    $stmt = $conn->prepare("INSERT INTO notes (note, expiration_time) VALUES (:note, :expiration_time)");
+    $stmt->bindParam(':note', $note);
+    $stmt->bindParam(':expiration_time', $expirationTime);
+    $stmt->execute();
+
+    // Return success status
+    http_response_code(200);
+} catch (PDOException $e) {
+    // Return error status
+    http_response_code(500);
+}
+?>
   </script>
   </head>
   <body>
